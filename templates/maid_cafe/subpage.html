@@ -1,0 +1,33 @@
+{# 繼承基礎模板文件 base.html #}
+{% extends "base.html" %}
+
+{# 載入靜態文件標籤，用於加載CSS、JS和圖片等靜態資源 #}
+{% load static %}
+
+{# 定義主要內容區塊，將插入到base.html中的content區塊 #}
+{% block content %}
+    {# Bootstrap容器，提供適當的內邊距和對齊 #}
+    <div class="container">
+        {# Bootstrap行(row)，包含欄位(column)布局 #}
+        <div class="row">
+            {# 左側邊欄區域，佔3欄寬度(在中等屏幕尺寸下) #}
+            <div class="col-md-3">
+                {# 引入側邊欄部分模板 #}
+                {% include 'maid_cafe/sidebar.html' %}
+            </div>
+
+            {# 主要內容區域，佔9欄寬度(在中等屏幕尺寸下) #}
+            <div class="col-md-9">
+                {# 頁面主標題，添加my-4類別提供上下外邊距 #}
+                <h1 class="my-4">這裡是 {{ label }}</h1>
+                
+                {# 信息提示框，用於顯示說明內容 #}
+                <div class="alert alert-info">
+                    {# 顯示動態標籤和說明文字 #}
+                    這是 {{ label }} 的內容區域，後續可以在這裡添加具體內容。
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{# 結束content區塊 #}

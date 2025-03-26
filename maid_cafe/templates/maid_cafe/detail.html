@@ -1,0 +1,16 @@
+{% extends 'base.html' %}  
+{# 繼承 base.html 模板，確保此頁面保留網站的基本結構 #}
+
+{% block content %}
+    <h2>{{ cafe.name }}</h2>  {# 顯示咖啡廳名稱 #}
+    <p>{{ cafe.description }}</p>  {# 顯示咖啡廳描述 #}
+    <p>Location: {{ cafe.location }}</p>  {# 顯示咖啡廳地點 #}
+
+    <h3>Maids</h3>  {# 女僕列表標題 #}
+    <ul>
+        {% for maid in cafe.maids.all %}  {# 遍歷此咖啡廳的所有女僕 #}
+            <li>{{ maid.name }} - {{ maid.description }}</li>  
+            {# 顯示女僕名稱與簡單描述 #}
+        {% endfor %}
+    </ul>
+{% endblock %}

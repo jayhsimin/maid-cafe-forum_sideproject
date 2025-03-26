@@ -1,0 +1,24 @@
+{# 繼承基礎模板 base.html，保持網站整體結構一致 #}
+{% extends 'base.html' %}  
+
+{# 開始定義內容區塊，將插入到base.html中的content區塊 #}
+{% block content %}
+    {# 頁面主標題 #}
+    <h2>Maid Cafes</h2>  {# 顯示"女僕咖啡廳列表"標題 #}
+
+    {# 開始無序列表，用於顯示咖啡廳列表 #}
+    <ul>
+        {# 使用for循環遍歷傳入的cafes列表 #}
+        {% for cafe in cafes %}  {# cafes應為Cafe物件的查詢結果集 #}
+            <li>
+                {# 創建指向咖啡廳詳細頁面的連結 #}
+                <a href="{% url 'maid_cafe_detail' cafe.pk %}">{{ cafe.name }}</a>  
+                {# 
+                    url標籤生成URL路徑，'maid_cafe_detail'是URL配置中的name
+                    cafe.pk 傳遞該咖啡廳的主鍵作為URL參數
+                    {{ cafe.name }} 顯示咖啡廳名稱作為連結文字
+                #}
+            </li>
+        {% endfor %}  {# 結束for循環 #}
+    </ul>  {# 結束無序列表 #}
+{% endblock %}  {# 結束content區塊 #}

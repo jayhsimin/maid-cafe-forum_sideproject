@@ -1,0 +1,36 @@
+{# 繼承 base.html 模板，確保此頁面擁有 base.html 的佈局與樣式 #}
+{% extends 'base.html' %}
+
+{% block content %}
+    {# 顯示文章標題 #}
+    <h2>{{ post.title }}</h2>
+
+    {# 顯示文章內容 #}
+    <p>{{ post.content }}</p>
+
+    {# 顯示文章作者 #}
+    <p>Author: {{ post.author }}</p>
+
+    {# 顯示文章的建立時間 #}
+    <p>Created at: {{ post.created_at }}</p>
+
+    {# 顯示留言區標題 #}
+    <h3>Comments</h3>
+
+    {# 迴圈列出所有該文章的留言 #}
+    <ul>
+        {% for comment in post.comments.all %}
+            {# 顯示留言內容、留言者與留言時間 #}
+            <li>{{ comment.content }} - {{ comment.author }} ({{ comment.created_at }})</li>
+        {% endfor %}
+    </ul>
+    {% if user.is_authenticated %}
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="content" rows="3" placeholder="輸入留言..." required></textarea>
+        <button type="submit" class="btn btn-primary">提交留言</button>
+    </form>
+{% else %}
+    <p>請登入以留言。</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+<!-- 側邊欄導航容器，使用'sidebar'類別進行樣式控制 -->
+<nav class="sidebar">
+    <!-- 女僕咖啡店論壇連結 -->
+    <a href="{% url 'maid_cafe:maid_cafe_forum' %}" class="nav-link">
+        女僕店論壇  <!-- 連結顯示文字 -->
+    </a>
+    
+    <!-- 女僕論壇連結 -->
+    <a href="{% url 'maid_cafe:maid_forum' %}" class="nav-link">
+        女僕論壇
+    </a>
+    
+    <!-- 動漫相關論壇連結 -->
+    <a href="{% url 'maid_cafe:anime_forum' %}" class="nav-link">
+        動漫論壇
+    </a>
+    
+    <!-- 女僕八卦話題連結 -->
+    <a href="{% url 'maid_cafe:gossip_maid' %}" class="nav-link">
+        八卦女僕
+    </a>
+    
+    <!-- 咖啡店八卦話題連結 -->
+    <a href="{% url 'maid_cafe:gossip_cafe' %}" class="nav-link">
+        八卦女僕店
+    </a>
+    
+    <!-- 奧客討論專區連結 -->
+    <a href="{% url 'maid_cafe:troublemaker_zone' %}" class="nav-link">
+        奧客專區
+    </a>
+    
+    <!-- 知名女僕/店家展示區連結 -->
+    <a href="{% url 'maid_cafe:hall_of_fame' %}" class="nav-link">
+        名人堂
+    </a>
+    
+    <!-- 女僕排名系統連結 -->
+    <a href="{% url 'maid_cafe:maid_ranking' %}" class="nav-link">
+        女僕排行
+    </a>
+</nav>

@@ -1,0 +1,26 @@
+<!-- 繼承基礎模板 (base.html) -->
+{% extends "base.html" %}
+
+<!-- 載入靜態文件標籤 -->
+{% load static %}
+
+<!-- 開始定義內容區塊 (將插入到base.html的content區塊) -->
+{% block content %}
+    <!-- 女僕咖啡店網格容器 -->
+    <div class="cafe-grid">
+        <!-- 使用for循環遍歷所有咖啡店 -->
+        {% for cafe in cafes %}
+            <!-- 單個咖啡店連結，點擊後導向詳細頁面 -->
+            <a href="{% url 'maid_cafe_detail' cafe.id %}" class="cafe-icon">
+                <!-- 咖啡店圖片，使用靜態文件路徑 -->
+                {% if cafe.image %}
+                    <img src="{{ cafe.image.url }}" alt="{{ cafe.name }}">
+                {% else %}
+                    <img src="{% static 'image/3.png' %}" alt="{{ cafe.name }}">
+                {% endif %}
+                <!-- 咖啡店名稱標題 -->
+                <h3>{{ cafe.name }}</h3>
+            </a>
+        {% endfor %}  <!-- 結束for循環 -->
+    </div>
+{% endblock %}  <!-- 結束content區塊 -->

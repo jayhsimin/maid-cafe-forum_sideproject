@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{ label }}</h2>
+    <ul>
+        {% for post in posts %}
+            <li><a href="{% url 'forum:post_detail' post.pk %}">{{ post.title }}</a></li>
+        {% empty %}
+            <li>暫無相關文章</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

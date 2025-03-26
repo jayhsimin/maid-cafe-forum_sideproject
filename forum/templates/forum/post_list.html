@@ -1,0 +1,21 @@
+{# 繼承 base.html 模板，使該頁面具有 base.html 的基本佈局與樣式 #}
+{% extends 'base.html' %}
+
+{% block content %}
+    {# 顯示標題：論壇文章列表 #}
+    <h2>Forum Posts</h2>
+
+    {# 以無序清單（ul）顯示所有文章 #}
+    <ul>
+        {# 遍歷 posts 變數（後端傳來的文章列表） #}
+        {% for post in posts %}
+            <li>
+                {# 生成每篇文章的超連結，點擊後跳轉至該文章的詳細頁面 #}
+                {# 使用 Django 的 {% url %} 標籤來動態生成網址 #}
+                {# 'post_detail' 是 Django URL 設定中的命名路由名稱 #}
+                {# post.pk 是文章的主鍵（Primary Key），用於識別特定文章 #}
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
